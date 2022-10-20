@@ -1,0 +1,15 @@
+data=read.csv('owid-covid-data.csv')
+France_data=subset(data,data$location=='France')
+pdf('Exponentielle_deces_Covid.pdf',width=6,height=6)
+plot(as.Date(France_data$date),France_data$total_deaths,ty='l',xlim=c(18320,18360),ylim=c(0,5000),axes=F,xlab='Date',ylab='Décès Covid en France (cumulés)')
+date_display=c(18320,18330,18340,18350,18360)
+axis(1,labels=as.Date(date_display,origin='1970-01-01'),at=date_display)
+axis(2)
+dev.off()
+
+pdf('Exponentielle_deces_Covid_log.pdf',width=6,height=6)
+plot(as.Date(France_data$date),log(France_data$total_deaths),ty='l',xlim=c(18320,18360),ylim=c(0,8.5),axes=F,xlab='Date',ylab='log(décès Covid en France) (cumulés)')
+axis(1,labels=as.Date(date_display,origin='1970-01-01'),at=date_display)
+axis(2)
+dev.off()
+

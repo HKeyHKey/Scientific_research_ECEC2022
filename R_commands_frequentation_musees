@@ -1,0 +1,4 @@
+data=read.table('Frequentation_musees.dat',header=T)
+pdf('Frequentation_musees.pdf',width=7,height=7)
+barplot(c(data$Palais_de_la_Découverte,data$Disneyland_Paris,data$Musée_de_l_armée));axis(1,labels=rep(data$Année,3),at=0.7+c(0:8)*1.2)
+dev.off()
